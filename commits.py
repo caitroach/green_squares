@@ -139,6 +139,7 @@ for _ in range(slot_commit):
     with open(filename, "a") as f:
         f.write(f"[{timestamp}] {quote}\n")
 
+    subprocess.run(["git", "push"])
     subprocess.run(["git", "add", filename])
     subprocess.run(["git", "commit", "-m", message])
     log_entries.append(f"[{timestamp}] - {message}")
