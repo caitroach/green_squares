@@ -103,11 +103,11 @@ week_data = data.get("week_data", {})
 week_commits = week_data.get(week_key, [])
 
 if len(week_commits) == 0:
-    num_days = random.randint(3, 5) # this makes it look natural, commits 3 to 5 days per week
-    week_commits = sorted(random.sample(range(7), num_days)) # pick 3-5 random days, at random
-    week_data = [week_key] = week_commits
+    num_days = random.randint(3, 5)
+    week_commits = sorted(random.sample(range(7), num_days))
+    week_data[week_key] = week_commits  #  fixed
     data["week_data"] = week_data
-    with open(counter_file, "w") as f: 
+    with open(counter_file, "w") as f:
         json.dump(data, f)
     
 if weekday not in week_commits:
